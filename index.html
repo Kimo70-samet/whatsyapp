@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>📱 طلب دعم فني</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب الدعم</title>
     <style>
         body {
             font-family: Arial;
@@ -17,45 +18,45 @@
             background: rgba(255,255,255,0.1);
             padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(10px);
         }
-        .btn {
-            background: #25D366;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            margin: 20px;
-            text-decoration: none;
-            display: inline-block;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📱 الدعم الفني المباشر</h1>
-        <p>للمساعدة في مشكلتك، نحتاج إلى رؤية شاشة هاتفك.</p>
-        
-        <h3>🎯 خطوات المشاركة:</h3>
-        <ol style="text-align: right; display: inline-block;">
-            <li>اضغط الزر أدناه</li>
-            <li>سيتم فتح محادثة الدعم</li>
-            <li>التقط صورة للشاشة</li>
-            <li>ارسل الصورة في المحادثة</li>
-            <li>سيتم مساعدتك فوراً</li>
-        </ol>
-        
-        <br><br>
-        
-        <a href="https://t.me/GH122_BOT?start=send_screen" class="btn">
-            ▶️ بدء الدعم الفني
-        </a>
-        
-        <p style="opacity: 0.8; margin-top: 30px;">
-            سيتم فتح Telegram للتواصل مع فريق الدعم
-        </p>
+    <div class="container" id="mainContent">
+        <h1>📱 جاري فتح الدعم الفني...</h1>
+        <p>سيتم فتح نافذة المحادثة خلال ثوانٍ</p>
+        <p>يرجى عدم إغلاق هذه الصفحة</p>
     </div>
+    
+    <div class="container hidden" id="instructionContent">
+        <h1>📱 خطوات إرسال لقطة الشاشة:</h1>
+        <p>1. التقط صورة للشاشة التي تواجه مشكلة فيها</p>
+        <p>2. ارجع لهذه الصفحة</p>
+        <p>3. اضغط على الزر أدناه لفتح المحادثة</p>
+        <p>4. ارسل الصورة في المحادثة</p>
+        
+        <br>
+        <a href="https://t.me/GH122_BOT?start=send_screen" 
+           style="background: #25D366; color: white; padding: 15px 30px; 
+                  border-radius: 10px; text-decoration: none; display: inline-block;">
+            ▶️ فتح محادثة الدعم
+        </a>
+    </div>
+
+    <script>
+        // فتح البوت في نافذة جديدة بعد تأخير قصير
+        setTimeout(function() {
+            window.open('https://t.me/GH122_BOT?start=send_screen', '_blank');
+            
+            // بعد 3 ثواني، إظهار التعليمات
+            setTimeout(function() {
+                document.getElementById('mainContent').classList.add('hidden');
+                document.getElementById('instructionContent').classList.remove('hidden');
+            }, 3000);
+        }, 2000);
+    </script>
 </body>
 </html>
